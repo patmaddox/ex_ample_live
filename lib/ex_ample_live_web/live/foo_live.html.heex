@@ -1,0 +1,36 @@
+<%= case @person do %>
+<%= %{name: nil} -> %>
+<%= f = form_for :person, "#", phx_submit: "name" %>
+What is your name?
+
+<%= text_input f, :name %>
+
+<%= submit "Proceed" %>
+<% %{quest: nil} -> %>
+<p>Greetings, <%= @person.name %>. What is your quest?</p>
+
+<%= f = form_for :person, "#", phx_submit: "quest" %>
+
+<p>
+<%= radio_button f, :quest, :holy_grail, checked: true %>
+
+"I seek the holy grail."
+</p>
+
+<%= submit "Proceed" %>
+<% %{color: nil} -> %>
+<%= f = form_for :person, "#", phx_submit: "color" %>
+
+<p>
+<%= radio_button f, :color, :blue %> Blue
+</p>
+<p>
+<%= radio_button f, :color, :yellow %> No, yellow
+</p>
+
+<%= submit "Proceed" %>
+<% %{color: "blue"} -> %>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pWS8Mg-JWSg?start=22" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<% %{color: "yellow"} -> %>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pWS8Mg-JWSg?start=82" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<% end %>

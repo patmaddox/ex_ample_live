@@ -1,0 +1,13 @@
+defmodule ExAmpleLiveWeb.FooLive do
+  use ExAmpleLiveWeb, :live_view
+
+  def render(assigns) do
+    ~H"""
+    Hello!
+    """
+  end
+
+  def mount(_params, %{}, socket) do
+    {:ok, socket}
+  end
+end
