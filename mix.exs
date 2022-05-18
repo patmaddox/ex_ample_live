@@ -4,13 +4,16 @@ defmodule ExAmpleLive.MixProject do
   def project do
     [
       app: :ex_ample_live,
+      description: "Example PhoenixLiveView app in a FreeBSD package.",
+      homepage_url: "https://github.com/patmaddox/ex_ample_live",
       version: "0.1.0",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      freebsd: [ maintainer: "pat@patmaddox.com" ]
     ]
   end
 
@@ -33,6 +36,8 @@ defmodule ExAmpleLive.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:freebsd, "~> 0.3.2", runtime: false},
+#      {:freebsd, path: "~/code/ex_freebsd", runtime: false},
       {:phoenix, "~> 1.6.8"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},
